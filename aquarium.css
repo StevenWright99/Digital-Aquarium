@@ -1,0 +1,71 @@
+body{
+  background-image: url("assets/underwater3.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-position: center center;
+  overflow: hidden;
+}
+
+#container{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;            /* keep the fish inside */
+  display: flex;
+  align-items: center;         /* vertical centering for the fish's midline */
+  /* border: 2px dotted green;    visual aid */
+}
+
+/* We’ll position the fish absolutely and move it with "left" in JS.
+   We keep its nose centered vertically via translateY(-50%).
+   Flip is done with a CSS variable so we can toggle it without
+   overwriting translateY. */
+
+#tuna-fish {
+  width: 300px;
+  will-change: transform;
+  transform-origin: center center;
+  animation: swimX 5s linear infinite;
+  position: relative;
+  left: 500px;
+}
+#clown-fish {
+  width: 150px;
+  position: relative;
+  top: 200px;
+  right: 300px;
+  will-change: transform;
+  transform-origin: center center;
+  animation: swimX 3.5s linear infinite;
+}
+#sunburnt-fish {
+  width: 100px;
+  position: relative;
+  bottom: 100px;
+  right: 100px;
+  will-change: transform;
+  transform-origin: center center;
+  animation: swimX 2s linear infinite;
+}
+
+#puffer-fish{
+  width: 60px;
+  position: relative;
+  bottom: 250px;
+  animation: swimX 10s linear infinite;
+}
+
+/* Keyframes only move the fish */
+@keyframes swimX {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  49.999% {
+    transform: translateX(100vw) scaleX(1); /* move right */
+  }
+  50% {
+    transform: translateX(100vw) scaleX(-1); /* flip instantly */
+  }
+  100% {
+    transform: translateX(0) scaleX(-1); /* move back left, flipped */
+  }
+}
